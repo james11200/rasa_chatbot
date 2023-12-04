@@ -53,3 +53,40 @@ stories:
     - increment_value: '6'
   - action: action_increment_dayoff_count
   - action: utter_updated_day_off_count
+
+
+
+- story: ask_location
+  steps:
+  - intent: ask_branch
+  - action: action_ask_which_branch
+
+
+- story: Xindian_Branch_Chosen
+  steps:
+    - intent: Xindian
+    - action: utter_location_Xin
+
+
+- story: ZhongheBranchChosen
+  steps:
+    - intent: Zhonghe
+    - action: utter_location_Zhong
+
+- story: interactive_story_1
+  steps:
+  - intent: ask_branch
+  - action: action_ask_which_branch
+  - intent: Xindian
+  - action: utter_location_Xin
+  - intent: ask_branch
+  - action: action_ask_which_branch
+  - intent: Zhonghe
+  - action: utter_location_Zhong
+
+- story: interactive_story_1
+  steps:
+  - intent: ask_branch
+  - action: action_ask_which_branch
+  - intent: Xindian
+  - action: utter_location_Xin

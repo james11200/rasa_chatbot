@@ -5,6 +5,20 @@ from rasa_sdk.events import SlotSet
 import time
 import json
 
+
+class AskWhichBranchAction(Action):
+    def name(self) -> Text:
+        return "action_ask_which_branch"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        buttons = [
+            {"title": "Xindian", "payload": "/Xindian"},
+            {"title": "Zhonghe", "payload": "/Zhonghe"}
+        ]
+        dispatcher.utter_message(text=f"Here are some options: ", buttons=buttons)
+
+        return []
 # from actions import increment_dayoff_count
 
 def increment_dayoff_count(json_file, user_id, increment_by):

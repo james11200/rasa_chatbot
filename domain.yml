@@ -1,6 +1,9 @@
 version: '3.1'
 intents:
+- Xindian
+- Zhonghe
 - affirm
+- ask_branch
 - bot_challenge
 - deny
 - goodbye
@@ -24,7 +27,7 @@ slots:
     - entity: increment_value
       type: from_entity
   updated_day_off_count:
-    type: any  
+    type: any
     mappings:
     - type: from_entity
       entity: updated_day_off_count
@@ -47,11 +50,26 @@ responses:
   utter_message:
   - text: Day-off count [increment_value] updated successfully.
   utter_updated_day_off_count:
-  - text: "Your updated day-off count is {updated_day_off_count}."  
+  - text: Your updated day-off count is {updated_day_off_count}.
+  utter_ask_which_branch:
+  - text: Which branch do you want to know?
+    buttons:
+    - title: Xindian
+      payload: /Xindian
+    - title: Zhonghe
+      payload: /Zhonghe
+  utter_location_Xin:
+  - text: It is in Xindian
+  utter_location_Zhong:
+  - text: It is in Zhonghe
 actions:
+- utter_ask_which_branch
+- utter_location_Xin
+- utter_location_Zhong
 - utter_updated_day_off_count
 - action_increment_dayoff_count
 - utter_request_value
+- action_ask_which_branch
 templates:
   utter_greet:
   - text: Hello, how can I assist you today?

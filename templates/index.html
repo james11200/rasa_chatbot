@@ -20,6 +20,11 @@
             margin-right: 15px;
 
         }
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
     </style>
 </head>
 
@@ -54,20 +59,20 @@
             $("#chat-widget-button").on("click", function () {
                 $("#chat-widget").toggleClass("d-none");
             });
-
+    
             $(".container").on("click", "#chat-widget-close-button", function () {
                 $("#chat-widget").addClass("d-none");
             });
-
+    
             // Handle user input in the chatbox
             $("#chat-widget-input").keypress(function (event) {
                 if (event.which === 13) {
                     let userMessage = $("#chat-widget-input").val();
                     $("#chat-widget-input").val("");
-
+    
                     // Append user message to the Chatbox
                     $("#chat-widget-messages").append("<div><strong>You: </strong>" + userMessage + "</div>");
-
+    
                     // Send user message to the server and get bot's response
                     $.ajax({
                         type: "POST",
@@ -76,8 +81,30 @@
                         data: JSON.stringify({ message: userMessage }),
                         success: function (data) {
                             let botResponse = data.response;
+    
                             // Append bot's response to the chatbox
                             $("#chat-widget-messages").append("<div><strong>Bot:</strong> " + botResponse + "</div>");
+    
+                            // Check if the response contains buttons for Xindian and Zhonghe
+                            if (botResponse.trim() === 'Here are some options:') {
+                                let buttons = [
+                                    { "title": "Xindian", "payload": "/Xindian" },
+                                    { "title": "Zhonghe", "payload": "/Zhonghe" }
+                                ];
+    
+                                // Render buttons in your chat interface
+                                buttons.forEach(function(button) {
+                                    let buttonElement = $("<button class='btn btn-primary btn-sm'> </button>").text(button.title);
+                                    buttonElement.click(function() {
+                                        // Handle button click action here
+                                        $("#chat-widget-messages").append("<div><strong>You: </strong>" + button.title + "</div>");
+                                        sendUserInput(button.title);
+                                    });
+    
+                                    $("#chat-widget-messages").append(buttonElement);
+
+                                });
+                            }
                         },
                         error: function () {
                             // Handle error if needed
@@ -86,6 +113,25 @@
                 }
             });
         });
+    
+        // Function to send user input to the server
+        function sendUserInput(userMessage) {
+            $.ajax({
+                type: "POST",
+                url: "/webhook",
+                contentType: "application/json",
+                data: JSON.stringify({ message: userMessage }),
+                success: function (data) {
+                    let botResponse = data.response;
+    
+                    // Append bot's response to the chatbox
+                    $("#chat-widget-messages").append("<div><strong>Bot:</strong> " + botResponse + "</div>");
+                },
+                error: function () {
+                    // Handle error if needed
+                }
+            });
+        }
     </script>
 
 </body>

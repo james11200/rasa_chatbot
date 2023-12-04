@@ -23,3 +23,24 @@ nlu:
     - Increment by [5](increment_value)
     - Increment [5](increment_value)
     - Increment by [4](increment_value)
+- intent: ask_branch
+  examples: |
+    - I want to ask a branch
+    - I want to ask a location
+    - branch
+    - what branch do you have
+    - I want to go to your branch
+- intent: Xindian
+  examples: |
+    - Xindian
+    - I want to know about Xindian
+    - Xindian branch
+    - Info about Xindian
+    - how to go to Xindian
+- intent: Zhonghe
+  examples: |
+    - Zhonghe
+    - I want to know about Zhonghe
+    - Zhonghe branch
+    - Info about Zhonghe
+    - how to go to Zhonghe
