@@ -1,0 +1,55 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+
+
+- story: Increment day-off count
+  steps:
+    - intent: inform_user_id
+      entities:
+        - user_id: "123"
+    - action: utter_request_value
+    - intent: inform_increment_value
+      entities:
+        - increment_value: 2
+    - action: action_increment_dayoff_count
+    - action: utter_updated_day_off_count
+- story: interactive_story_1
+  steps:
+  - intent: inform_user_id
+    entities:
+    - user_id: '4'
+  - slot_was_set:
+    - user_id: '4'
+  - action: utter_request_value
+  - intent: inform_increment_value
+    entities:
+    - increment_value: '4'
+  - slot_was_set:
+    - increment_value: '4'
+  - action: action_increment_dayoff_count
+  - action: utter_updated_day_off_count
+
+- story: interactive_story_1
+  steps:
+  - intent: inform_user_id
+    entities:
+    - user_id: '456'
+  - slot_was_set:
+    - user_id: '456'
+  - action: utter_request_value
+  - intent: inform_user_id
+    entities:
+    - increment_value: '6'
+  - slot_was_set:
+    - increment_value: '6'
+  - action: action_increment_dayoff_count
+  - action: utter_updated_day_off_count

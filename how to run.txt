@@ -1,0 +1,9 @@
+rasa run --cors "*" --port 8080   
+
+rasa run actions --actions actions
+check url at http://localhost:5055/
+
+run app.py and see the url.
+(port is defined in app.py)
+
+

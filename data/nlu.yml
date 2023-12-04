@@ -1,0 +1,25 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+- intent: inform_user_id
+  examples: |
+    - The user ID is [123](user_id)
+    - User ID: [456](user_id)
+    - My user ID is [789](user_id)
+    - My user ID is [4](user_id)
+    - My user ID is [456](user_id)
+    - [6](increment_value)
+- intent: inform_increment_value
+  examples: |
+    - I want to increase the count by [2](increment_value)
+    - Increment by [5](increment_value) please
+    - Increment by [5](increment_value)
+    - Increment [5](increment_value)
+    - Increment by [4](increment_value)

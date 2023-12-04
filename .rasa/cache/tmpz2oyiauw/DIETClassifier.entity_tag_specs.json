@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-increment_value",
+      "2": "I-increment_value",
+      "3": "L-increment_value",
+      "4": "U-increment_value",
+      "5": "B-user_id",
+      "6": "I-user_id",
+      "7": "L-user_id",
+      "8": "U-user_id",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-increment_value": 1,
+      "I-increment_value": 2,
+      "L-increment_value": 3,
+      "U-increment_value": 4,
+      "B-user_id": 5,
+      "I-user_id": 6,
+      "L-user_id": 7,
+      "U-user_id": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]
